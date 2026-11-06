@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#1e3a8a">
+  <meta name="description" content="Guia prático, acessível e conciso para usar Inteligência Artificial com segurança no cotidiano. Projeto de Extensão II - UNIP Campus Anchieta.">
+  <meta name="author" content="Pablo Alexandre de Vasconcelos">
+  <title>Inteligência Artificial sem Complicação | Guia Prático - UNIP Anchieta</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Lenis para Scroll Ultra-Suave no PC / Desktop -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Barra de Notificação e Acessibilidade Superior -->
+  <aside class="top-bar" id="top-bar" aria-label="Acessibilidade e Identificação Institucional">
+    <div class="container top-bar-content">
+      <div class="top-bar-badge">
+        <span class="status-indicator" aria-hidden="true"></span>
+        <span>UNIP Campus Anchieta · Ciência da Computação · Extensão II</span>
+      </div>
+
+      <div class="accessibility-controls">
+        <!-- Botão Assistente de Leitura por Voz para Idosos / Dificuldade de Leitura -->
+        <button id="btn-toggle-tts" class="acc-btn tts-btn" title="Ativar leitor em voz alta" aria-label="Ativar leitor de tela em voz alta">
+          <span class="btn-cue-icon">🔊</span>
+          <span class="tts-btn-text">Ouvir Página</span>
+        </button>
+
+        <button id="btn-decrease-font" class="acc-btn" title="Diminuir fonte" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-reset-font" class="acc-btn" title="Tamanho normal" aria-label="Tamanho normal da fonte">A</button>
+        <button id="btn-increase-font" class="acc-btn" title="Aumentar fonte" aria-label="Aumentar tamanho da fonte">A+</button>
+        
+        <button id="btn-toggle-theme" class="acc-btn theme-toggle" title="Alternar modo escuro/claro" aria-label="Alternar tema">
+          <svg class="ui-icon theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="ui-icon theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Cabeçalho Principal (Sempre Fixo/Sticky Acompanhando o Scroll) -->
+  <header class="main-header" id="header">
+    <div class="container header-container">
+      <a href="#hero" class="brand-logo" aria-label="Início Inteligência Artificial sem Complicação">
+        <div class="brand-symbol">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            <circle cx="9" cy="10" r="1" fill="currentColor"></circle>
+            <circle cx="12" cy="10" r="1" fill="currentColor"></circle>
+            <circle cx="15" cy="10" r="1" fill="currentColor"></circle>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Inteligência Artificial sem Complicação</span>
+          <span class="brand-subtitle">Guia Prático de Extensão · UNIP</span>
+        </div>
+      </a>
+
+      <!-- Ações do Header (Busca + Hambúrguer) -->
+      <div class="header-actions-group">
+        <!-- Botão de Busca / Lupa -->
+        <button id="btn-open-search" class="search-trigger-btn" aria-label="Pesquisar no site" title="Pesquisar assuntos e termos">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span class="search-trigger-text">Pesquisar</span>
+        </button>
+
+        <!-- Botão Hambúrguer Mobile -->
+        <button id="mobile-menu-btn" class="mobile-menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu de navegação">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+
+      <!-- Menu Principal -->
+      <nav id="main-nav" class="nav-menu" aria-label="Navegação do site" aria-hidden="true">
+        <div class="nav-menu-header-mobile">
+          <span class="nav-mobile-title">Menu de Navegação</span>
+          <button id="btn-close-nav" class="btn-close-modal" aria-label="Fechar menu">✕</button>
+        </div>
+        <ul class="nav-list">
+          <li><a href="#o-que-e-ia" class="nav-link">1. O que é</a></li>
+          <li><a href="#primeiros-passos" class="nav-link">2. Primeiros Passos</a></li>
+          <li><a href="#construtor-prompt" class="nav-link">3. Receita do Pedido</a></li>
+          <li><a href="#receitas-praticas" class="nav-link">4. 10 Receitas</a></li>
+          <li><a href="#midias-ia" class="nav-link">5. Imagens & Voz</a></li>
+          <li><a href="#seguranca" class="nav-link">6. Segurança & LGPD</a></li>
+          <li><a href="#cada-idade" class="nav-link">7. Para Cada Idade</a></li>
+          <li><a href="#quiz-section" class="nav-link highlight-link">Quiz</a></li>
+          <li><a href="#cola-rapida" class="nav-link">Cola Rápida</a></li>
+          <li><a href="#sobre-projeto" class="nav-link">Sobre o Projeto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MODAL DE BUSCA INTERATIVO -->
+  <div id="search-modal" class="search-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="search-modal-window">
+      <div class="search-input-wrapper">
+        <svg class="search-modal-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="search" id="site-search-input" placeholder="O que deseja aprender? (Ex: idoso, whatsapp, preço, golpe, lgpd)..." autocomplete="off">
+        <button id="btn-close-search" class="btn-close-modal" aria-label="Fechar busca">✕</button>
+      </div>
+      <div class="search-hints-row">
+        <span>Sugestões rápidas:</span>
+        <button type="button" class="search-tag" data-search="idoso">Idosos</button>
+        <button type="button" class="search-tag" data-search="prompt">Prompts (Pedidos)</button>
+        <button type="button" class="search-tag" data-search="whatsapp">WhatsApp</button>
+        <button type="button" class="search-tag" data-search="pix">Golpes do Pix</button>
+        <button type="button" class="search-tag" data-search="segurança">Segurança & LGPD</button>
+      </div>
+      <div id="search-results-list" class="search-results-box" role="region" aria-live="polite">
+        <div class="search-placeholder-msg">Digite 2 ou mais letras para buscar em todo o conteúdo do guia.</div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Seção Hero: Mobile First com Navegação Direta -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content reveal-on-scroll">
+          <div class="hero-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>Extensão Universitária · Ciência da Computação</span>
+          </div>
+
+          <h1 class="hero-title">
+            Inteligência Artificial <span class="gradient-text">sem Complicação</span>
+          </h1>
+
+          <p class="hero-description">
+            Guia prático e conciso para usar Inteligência Artificial no seu cotidiano: em casa, nos estudos, no atendimento ao público e no trabalho. Criado para capacitar qualquer pessoa com linguagem simples, foco ético e total segurança.
+          </p>
+
+          <!-- Chamadas para Ação Rápidas -->
+          <div class="hero-actions">
+            <button type="button" id="btn-open-guided" class="btn btn-lost">
+              <span class="btn-cue-icon">🧭</span>
+              <span>Estou perdido: por onde começo?</span>
+            </button>
+            <a href="#receitas-praticas" class="btn btn-primary">
+              <span class="btn-cue-icon">📋</span>
+              <span>10 Receitas Prontas</span>
+            </a>
+          </div>
+
+          <!-- Badges de valor concisos -->
+          <div class="hero-pills">
+            <div class="pill-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>10 Modelos Prontos</span>
+            </div>
+            <div class="pill-item">
+              <span class="pill-cue-icon">🛡️</span>
+              <span>Privacidade & LGPD</span>
+            </div>
+            <div class="pill-item">
+              <span class="pill-cue-icon">📱</span>
+              <span>Otimizado para Celular</span>
+            </div>
+            <div class="pill-item">
+              <span class="pill-cue-icon">⚡</span>
+              <span>Leitura Rápida</span>
+            </div>
+          </div>
+
+          <!-- Ficha do Estudante Autor -->
+          <div class="author-hero-card">
+            <div class="author-avatar">PV</div>
+            <div class="author-info">
+              <div class="author-name">Pablo Alexandre de Vasconcelos</div>
+              <div class="author-role">Bacharelado em Ciência da Computação · UNIP Campus Anchieta</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card de Exemplo Conciso -->
+        <div class="hero-card-preview reveal-on-scroll" aria-hidden="true">
+          <div class="mockup-phone">
+            <div class="mockup-header">
+              <div class="phone-speaker"></div>
+            </div>
+            <div class="mockup-screen">
+              <div class="chat-bubble chat-user">
+                "Você é redator de textos simples. Escreva um aviso sobre nosso horário no feriado em 3 linhas..."
+              </div>
+              <div class="chat-bubble chat-assistant">
+                <strong>Aviso:</strong> Olá clientes e amigos! Neste feriado atenderemos até às 12h. Agradecemos a preferência e desejamos um ótimo descanso!
+              </div>
+              <div class="preview-badge">
+                Baseado no E-book Oficial UNIP 2026
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUIA DIRECIONADO: "ESTOU PERDIDO" (MODAL) -->
+    <div id="guided-panel" class="guided-helper-modal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="guided-helper-box">
+        <div class="guided-header">
+          <div class="guided-title-wrap">
+            <span class="guided-cue-icon">🧭</span>
+            <div>
+              <h3>Encontre exatamente o que você precisa</h3>
+              <p>Selecione seu perfil e objetivo para ir direto ao ponto:</p>
+            </div>
+          </div>
+          <button id="btn-close-guided" class="btn-close-modal" aria-label="Fechar">✕</button>
+        </div>
+
+        <div class="guided-body">
+          <div class="guided-step">
+            <label class="guided-label">1. Quem é você?</label>
+            <div class="choice-pills" id="choice-profile">
+              <button type="button" class="choice-pill active" data-val="idoso">👴👵 Pessoa Idosa (Melhor Idade)</button>
+              <button type="button" class="choice-pill" data-val="comerciante">🏪 Comerciante / Autônomo / MEI</button>
+              <button type="button" class="choice-pill" data-val="estudante">🎓 Estudante / Jovem</button>
+              <button type="button" class="choice-pill" data-val="curioso">👋 Iniciante / Primeiro Contato</button>
+            </div>
+          </div>
+
+          <div class="guided-step">
+            <label class="guided-label">2. Qual a sua prioridade hoje?</label>
+            <div class="choice-pills" id="choice-goal">
+              <button type="button" class="choice-pill active" data-val="voz">🎙️ Usar por voz sem digitar</button>
+              <button type="button" class="choice-pill" data-val="mensagens">💬 Criar avisos e responder clientes</button>
+              <button type="button" class="choice-pill" data-val="golpes">🚨 Aprender a não cair em golpes</button>
+              <button type="button" class="choice-pill" data-val="prompt">📝 Aprender a fazer bons pedidos</button>
+            </div>
+          </div>
+
+          <div class="guided-footer">
+            <button type="button" id="btn-apply-guided" class="btn btn-primary btn-large">
+              <span>Ir para a Seção Recomendada</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEGENDA CONCISA DE CORES DO E-BOOK -->
+    <section class="section-color-guide">
+      <div class="container">
+        <div class="color-legend-card">
+          <div class="color-legend-title">Como interpretar as caixas deste guia:</div>
+          <div class="color-legend-grid">
+            <div class="legend-badge legend-green">
+              <span class="legend-bullet"></span>
+              <span><strong>Verde:</strong> Dicas práticas</span>
+            </div>
+            <div class="legend-badge legend-red">
+              <span class="legend-bullet"></span>
+              <span><strong>Vermelho:</strong> Cuidados e segurança</span>
+            </div>
+            <div class="legend-badge legend-blue">
+              <span class="legend-bullet"></span>
+              <span><strong>Azul:</strong> Atividades para praticar</span>
+            </div>
+            <div class="legend-badge legend-dashed">
+              <span class="legend-bullet"></span>
+              <span><strong>Tracejado:</strong> Pedidos prontos para copiar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPÍTULO 1: O Que é Inteligência Artificial? -->
+    <section class="content-section" id="o-que-e-ia" data-search-scope="conceito o que é inteligencia artificial funcionamento estagiario mitos e verdades">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="chapter-number">Capítulo 01</span>
+          <h2 class="section-title">O que é Inteligência Artificial?</h2>
+          <p class="section-subtitle">Sem termos difíceis. A Inteligência Artificial é a capacidade de um computador realizar tarefas como entender textos, reconhecer vozes e sugerir caminhos.</p>
+        </div>
+
+        <!-- Você já usa Inteligência Artificial -->
+        <h3 class="subsection-title">Você já usa Inteligência Artificial no dia a dia:</h3>
+        <div class="grid-cards-3">
+          <div class="feature-card reveal-on-scroll">
+            <h4>Corretor de Mensagens</h4>
+            <p>Prevê a palavra seguinte no teclado do seu smartphone.</p>
+          </div>
+          <div class="feature-card reveal-on-scroll">
+            <h4>Reconhecimento Facial</h4>
+            <p>Destrava seu celular lendo os traços do seu rosto em milissegundos.</p>
+          </div>
+          <div class="feature-card reveal-on-scroll">
+            <h4>Filtro de Spam</h4>
+            <p>Identifica mensagens suspeitas e protege sua caixa de entrada.</p>
+          </div>
+          <div class="feature-card reveal-on-scroll">
+            <h4>Assistente por Voz</h4>
+            <p>Entende seus comandos falados para marcar alarmes e responder dúvidas.</p>
+          </div>
+          <div class="feature-card reveal-on-scroll">
+            <h4>Rotas no Mapa</h4>
+            <p>Calcula o trajeto mais rápido desviando de congestionamentos.</p>
+          </div>
+          <div class="feature-card reveal-on-scroll">
+            <h4>Sugestões de Vídeo</h4>
+            <p>Aprende o que você prefere para recomendar conteúdos relevantes.</p>
+          </div>
+        </div>
+
+        <!-- Metáfora do Estagiário Super Rápido -->
+        <div class="comparison-highlight-card mt-4 reveal-on-scroll">
+          <div class="comp-badge">Analogia Prática</div>
+          <h3 class="comp-title">O Estagiário Super Rápido</h3>
+          <p class="comp-text">
+            Pense na Inteligência Artificial como um estagiário ultraveloz: ele leu milhões de páginas e escreve em segundos. <strong>Porém</strong>: ele não conhece o seu negócio até que você explique, inventa respostas com total convicção e não responde por eventuais erros.
+          </p>
+          <div class="comp-footer">
+            <strong>Regra:</strong> Quem confere, aprova e decide o que usar é sempre você.
+          </div>
+        </div>
+
+        <!-- Tabela Comparativa Resumida -->
+        <div class="table-container-responsive mt-4 reveal-on-scroll">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th class="th-good">A Inteligência Artificial ajuda muito em:</th>
+                <th class="th-bad">A Inteligência Artificial NÃO deve ser usada sozinha para:</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Melhorar textos, comunicados e respostas de clientes.</td>
+                <td>Decidir sobre remédios, sintomas e diagnósticos de saúde.</td>
+              </tr>
+              <tr>
+                <td>Organizar listas, horários e ideias de rotina.</td>
+                <td>Decidir questões financeiras, legais ou tributárias.</td>
+              </tr>
+              <tr>
+                <td>Resumir áudios compridos e documentos extensos.</td>
+                <td>Afirmar preços, datas e dados sem conferência humana.</td>
+              </tr>
+              <tr>
+                <td>Sugerir ideias de divulgação e promoções locais.</td>
+                <td>Julgar pessoas (contratar, demitir, punir ou acusar).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mitos e Verdades Conciso -->
+        <div class="myths-wrapper mt-4 reveal-on-scroll">
+          <h3 class="subsection-title">Mitos e Verdades sobre Inteligência Artificial:</h3>
+          <div class="accordion" id="myths-accordion">
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span>"A Inteligência Artificial sabe tudo?"</span>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-content">
+                <p><strong>Mito.</strong> Ela erra com convicção e desconhece eventos posteriores ao seu treinamento, exceto se consultar a internet em tempo real.</p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span>"Se está bem escrito, está certo?"</span>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-content">
+                <p><strong>Mito.</strong> Texto elegante não comprova veracidade. A máquina pode inventar (alucinar) dados usando palavras bonitas.</p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span>"É apenas para jovens e programadores?"</span>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-content">
+                <p><strong>Mito.</strong> Qualquer pessoa pode usar a Inteligência Artificial falando pelo microfone do celular, em linguagem cotidiana.</p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span>"Qualquer um pode aprender a usar?"</span>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-content">
+                <p><strong>Verdade.</strong> Se você sabe manter uma conversa normal, já tem a habilidade básica para interagir com a ferramenta.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPÍTULO 2: Primeiros Passos -->
+    <section class="content-section bg-alt" id="primeiros-passos" data-search-scope="primeiros passos como começar baixar ferramentas chatgpt gemini copilot claude whatsapp">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="chapter-number">Capítulo 02</span>
+          <h2 class="section-title">Primeiros Passos com Inteligência Artificial</h2>
+          <p class="section-subtitle">Escolha uma ferramenta e comece em 5 etapas simples.</p>
+        </div>
+
+        <div class="grid-cards-3">
+          <div class="category-card reveal-on-scroll">
+            <div class="category-badge">Texto & Resumos</div>
+            <h3>Assistentes de Conversa</h3>
+            <p>Para redigir avisos, tirar dúvidas e organizar tarefas.</p>
+            <div class="examples-tag">Exemplos: ChatGPT, Gemini, Copilot, Meta AI no WhatsApp.</div>
+          </div>
+          <div class="category-card reveal-on-scroll">
+            <div class="category-badge">Visual & Imagens</div>
+            <h3>Geradores de Imagem</h3>
+            <p>Para ilustrações de cartazes, redes sociais e convites.</p>
+            <div class="examples-tag">Exemplos: Canva Inteligência Artificial, Copilot Designer.</div>
+          </div>
+          <div class="category-card reveal-on-scroll">
+            <div class="category-badge">Voz & Mensagens</div>
+            <h3>Transcrição e Áudio</h3>
+            <p>Para converter mensagens de voz em tarefas escritas.</p>
+            <div class="examples-tag">Exemplos: Transcrição nativa do WhatsApp, gravadores.</div>
+          </div>
+        </div>
+
+        <!-- 5 Passos Concisos -->
+        <div class="steps-flow mt-4">
+          <div class="step-card reveal-on-scroll">
+            <div class="step-num">1</div>
+            <h4>Baixe na Loja Oficial</h4>
+            <p>Use apenas Google Play Store, Apple App Store ou sites oficiais.</p>
+          </div>
+          <div class="step-card reveal-on-scroll">
+            <div class="step-num">2</div>
+            <h4>Crie sua Conta</h4>
+            <p>Cadastre-se com e-mail e use uma senha exclusiva.</p>
+          </div>
+          <div class="step-card reveal-on-scroll">
+            <div class="step-num">3</div>
+            <h4>Ajuste a Privacidade</h4>
+            <p>Nas opções, evite que suas conversas treinem o modelo público.</p>
+          </div>
+          <div class="step-card reveal-on-scroll">
+            <div class="step-num">4</div>
+            <h4>Fale ou Digite</h4>
+            <p>Converse normalmente. No celular, clique no microfone do teclado.</p>
+          </div>
+          <div class="step-card reveal-on-scroll">
+            <div class="step-num">5</div>
+            <h4>Revise e Ajuste</h4>
+            <p>Leia com calma e peça: "faça mais curto" ou "mude o tom".</p>
+          </div>
+        </div>
+
+        <!-- Caixas Verde e Vermelha do E-book -->
+        <div class="grid-cards-2 mt-4">
+          <div class="box-dica reveal-on-scroll">
+            <div class="box-title"><span class="box-cue-icon">💡</span> DICA PRÁTICA</div>
+            <p><strong>Prefere não digitar?</strong> Fale diretamente pelo microfone do teclado do celular. Os assistentes de Inteligência Artificial compreendem a fala com naturalidade.</p>
+          </div>
+          <div class="box-cuidado reveal-on-scroll">
+            <div class="box-title"><span class="box-cue-icon">⚠️</span> CUIDADOS ESSENCIAIS</div>
+            <p>Desconfie de aplicativos clonados que cobram por funções gratuitas. Você não precisa pagar nada para aprender a usar as ferramentas principais.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPÍTULO 3: Receita do Bom Pedido + MONTADOR INTERATIVO -->
+    <section class="content-section" id="construtor-prompt" data-search-scope="prompt receita ingredientes papel tarefa contexto formato tom como pedir gerador">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="chapter-number">Capítulo 03</span>
+          <h2 class="section-title">A Receita do Bom Pedido (Prompt)</h2>
+          <p class="section-subtitle">O comando que você envia para a Inteligência Artificial chama-se <strong>Prompt</strong>. Quanto mais claro o pedido, mais assertiva a resposta.</p>
+        </div>
+
+        <!-- Os 5 Ingredientes -->
+        <div class="ingredients-compact-row reveal-on-scroll">
+          <div class="ing-badge-pill"><strong>1. Papel:</strong> Quem a Inteligência Artificial deve ser?</div>
+          <div class="ing-badge-pill"><strong>2. Tarefa:</strong> O que fazer exatamente?</div>
+          <div class="ing-badge-pill"><strong>3. Contexto:</strong> Quais informações ela precisa saber?</div>
+          <div class="ing-badge-pill"><strong>4. Formato:</strong> Mensagem curta, lista ou tabela?</div>
+          <div class="ing-badge-pill"><strong>5. Tom:</strong> Simpático, formal ou direto?</div>
+        </div>
+
+        <!-- FERRAMENTA INTERATIVA: MONTADOR DE PROMPTS -->
+        <div class="prompt-builder-tool mt-4 reveal-on-scroll">
+          <div class="tool-header">
+            <div class="tool-title-wrap">
+              <span class="tool-cue-icon">📝</span>
+              <div>
+                <h3 class="tool-title">Montador Interativo de Pedido</h3>
+                <p class="tool-desc">Preencha os campos abaixo ou escolha um modelo pronto para gerar seu pedido formatado:</p>
+              </div>
+            </div>
+            <div class="quick-presets">
+              <button type="button" class="preset-btn" data-preset="loja">Comércio / Loja</button>
+              <button type="button" class="preset-btn" data-preset="estudo">Estudante</button>
+              <button type="button" class="preset-btn" data-preset="servico">Prestador de Serviço</button>
+              <button type="button" class="preset-btn" data-preset="limpar">Limpar</button>
+            </div>
+          </div>
+
+          <div class="tool-body">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="input-papel">1. Papel (Quem a Inteligência Artificial será?)</label>
+                <input type="text" id="input-papel" value="Atendente simpático de um comércio de bairro">
+              </div>
+              <div class="form-group">
+                <label for="input-tarefa">2. Tarefa (O que ela vai produzir?)</label>
+                <input type="text" id="input-tarefa" value="Escrever um aviso sobre o atendimento no feriado">
+              </div>
+              <div class="form-group">
+                <label for="input-contexto">3. Contexto (Quais dados ela precisa saber?)</label>
+                <textarea id="input-contexto" rows="2">Horário habitual das 8h às 18h; no feriado atendimento até às 12h.</textarea>
+              </div>
+              <div class="form-group">
+                <label for="input-formato">4. Formato (Como entregar?)</label>
+                <input type="text" id="input-formato" value="Mensagem curta de até 40 palavras para WhatsApp">
+              </div>
+              <div class="form-group">
+                <label for="input-tom">5. Tom</label>
+                <select id="input-tom">
+                  <option value="simpático, acolhedor e direto">Simpático e Acolhedor</option>
+                  <option value="profissional, respeitoso e formal">Profissional e Formal</option>
+                  <option value="curto, objetivo e sem enrolação">Direto e Objetivo</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="generated-prompt-box">
+              <div class="box-label">
+                <span>Seu Pedido Formatado:</span>
+                <span class="sub-label">Tracejado do E-book</span>
+              </div>
+              <pre class="prompt-output" id="output-prompt-text"></pre>
+              <div class="prompt-action-bar">
+                <button type="button" class="btn btn-copy" id="btn-copy-builder">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>Copiar Pedido Pronto</span>
+                </button>
+                <span class="copy-feedback" id="copy-feedback-msg" role="status">Copiado para a área de transferência!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 Truques Rápidos -->
+        <div class="tips-grid mt-4">
+          <div class="tip-card reveal-on-scroll">
+            <span class="tip-num">1</span>
+            <h4>Converse em Etapas</h4>
+            <p>Peça ajustes: "faça mais curto", "mais acolhedor".</p>
+          </div>
+          <div class="tip-card reveal-on-scroll">
+            <span class="tip-num">2</span>
+            <h4>Peça para Perguntar</h4>
+            <p>"Antes de responder, me faça as perguntas necessárias."</p>
+          </div>
+          <div class="tip-card reveal-on-scroll">
+            <span class="tip-num">3</span>
+            <h4>Peça 3 Opções</h4>
+            <p>Peça alternativas para escolher a melhor versão.</p>
+          </div>
+          <div class="tip-card reveal-on-scroll">
+            <span class="tip-num">4</span>
+            <h4>Mostre seu Estilo</h4>
+            <p>Cole um texto seu e diga: "escreva com este tom".</p>
+          </div>
+          <div class="tip-card reveal-on-scroll">
+            <span class="tip-num">5</span>
+            <h4>Divida Tarefas Grandes</h4>
+            <p>Peça primeiro o esboço, depois cada detalhe.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPÍTULO 4: AS 10 RECEITAS (RECOLHIDA INICIALMENTE COM 'VER MAIS' E FILTROS) -->
+    <section class="content-section bg-alt" id="receitas-praticas" data-search-scope="10 receitas modelos prontos descricao produto responder clientes comunicados posts instagram agenda estoque orçamentos reclamações ideias">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="chapter-number">Capítulo 04</span>
+          <h2 class="section-title">A Inteligência Artificial no Dia a Dia</h2>
+          <p class="section-subtitle">10 modelos prontos para copiar, substituir os dados entre [colchetes] e utilizar imediatamente.</p>
+        </div>
+
+        <!-- Filtros Rápidos -->
+        <div class="recipes-filter-bar reveal-on-scroll">
+          <button class="filter-pill active" data-filter="all">Todos os Modelos</button>
+          <button class="filter-pill" data-filter="vendas">Vendas & Clientes</button>
+          <button class="filter-pill" data-filter="rotina">Rotina & Agenda</button>
+          <button class="filter-pill" data-filter="custos">Finanças & Custos</button>
+          <button class="filter-pill" data-filter="comunicacao">Comunicação Delicada</button>
+        </div>
+
+        <!-- Lista de Receitas com visualização inicial compacta -->
+        <div class="recipes-container" id="recipes-list">
+          
+          <!-- Receita 1 -->
+          <article class="recipe-card reveal-on-scroll" data-category="vendas">
+            <div class="recipe-header">
+              <span class="recipe-number">01</span>
+              <div>
+                <h3 class="recipe-title">Descrever um Produto ou Serviço</h3>
+                <span class="recipe-badge">Para anúncios, catálogos e perfis em redes sociais</span>
+              </div>
+            </div>
+            <div class="prompt-box-dashed">
+              <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
+              <div class="prompt-text">Você é redator de textos simples e honestos.
+Escreva 3 opções de descrição curta (até 30 palavras) para [produto ou serviço], voltada a [público: ex. moradores do bairro, famílias].
+Informações verdadeiras que podem ser usadas: [liste diferenciais, horário, forma de atendimento].
+Linguagem simples, sem exageros e sem inventar nada além do informado.</div>
+              <button class="btn btn-copy-inline">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copiar Prompt</span>
+              </button>
+            </div>
+            <div class="recipe-warning">
+              <strong>🔍 Confira antes:</strong> As informações estão corretas? Não prometa resultados que você não possa garantir.
+            </div>
+          </article>
+
+          <!-- Receita 2 -->
+          <article class="recipe-card reveal-on-scroll" data-category="vendas">
+            <div class="recipe-header">
+              <span class="recipe-number">02</span>
+              <div>
+                <h3 class="recipe-title">Responder Mensagens de Clientes</h3>
+                <span class="recipe-badge">Respostas educadas e ágeis no WhatsApp ou e-mail</span>
+              </div>
+            </div>
+            <div class="prompt-box-dashed">
+              <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
+              <div class="prompt-text">Você atende pessoas pelo WhatsApp de [meu negócio].
+Responda de forma educada, curta e simpática.
+Informações verdadeiras: horário [__]; prazo [__]; formas de pagamento [__].
+Mensagem recebida: [cole aqui a mensagem, sem nome nem telefone].
+Não invente preços nem prazos que eu não informei. Se faltar informação, diga que vai confirmar.</div>
+              <button class="btn btn-copy-inline">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copiar Prompt</span>
+              </button>
+            </div>
+            <div class="recipe-warning">
+              <strong>🔍 Confira antes:</strong> Preços e prazos. Nunca cole dados pessoais (CPF, telefone) de clientes no chat.
+            </div>
+          </article>
+
+          <!-- Receita 3 -->
+          <article class="recipe-card reveal-on-scroll" data-category="comunicacao">
+            <div class="recipe-header">
+              <span class="recipe-number">03</span>
+              <div>
+                <h3 class="recipe-title">Criar Avisos e Comunicados</h3>
+                <span class="recipe-badge">Para mudança de horário, obras, feriados ou reuniões</span>
+              </div>
+            </div>
+            <div class="prompt-box-dashed">
+              <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
+              <div class="prompt-text">Escreva um aviso curto para [clientes / vizinhos / equipe] sobre: [assunto, data e horário].
+Tom simpático e direto.
+Faça duas versões: uma para mural físico e outra curta para WhatsApp.</div>
+              <button class="btn btn-copy-inline">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copiar Prompt</span>
+              </button>
+            </div>
+            <div class="recipe-warning">
+              <strong>🔍 Confira antes:</strong> Datas e dias da semana. A Inteligência Artificial pode se confundir com dias do calendário.
+            </div>
+          </article>
+
+          <!-- Receitas extras (recolhidas por padrão no modo 'Ver Mais') -->
+          <div id="extra-recipes-wrap" class="extra-recipes-hidden">
+
+            <!-- Receita 4 -->
+            <article class="recipe-card" data-category="vendas">
+              <div class="recipe-header">
+                <span class="recipe-number">04</span>
+                <div>
+                  <h3 class="recipe-title">Criar Posts de Divulgação</h3>
+                  <span class="recipe-badge">Para redes sociais e status do WhatsApp</span>
+                </div>
+              </div>
+              <div class="prompt-box-dashed">
+                <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
+                <div class="prompt-text">Crie 3 opções de legenda para divulgar [evento ou serviço] no dia [__].
+Tom caloroso e próximo. Até 40 palavras cada, terminando com convite para ação.
+Sugira também 5 hashtags relacionadas a [bairro/cidade].</div>
+                <button class="btn btn-copy-inline">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>Copiar Prompt</span>
+                </button>
+              </div>
+              <div class="recipe-warning">
+                <strong>🔍 Confira antes:</strong> Preço e regras vigentes da promoção.
+              </div>
+            </article>
+
+            <!-- Receita 5 -->
+            <article class="recipe-card" data-category="rotina">
+              <div class="recipe-header">
+                <span class="recipe-number">05</span>
+                <div>
+                  <h3 class="recipe-title">Organizar Tarefas e Agenda</h3>
+                  <span class="recipe-badge">Para planejar a rotina do dia ou da semana</span>
+                </div>
+              </div>
+              <div class="prompt-box-dashed">
+                <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
+                <div class="prompt-text">Monte um plano para [o meu dia / minha semana].
+Compromissos fixos: [liste dia e horário].
+Tarefas a fazer: [liste as tarefas].
+Prazos: [__]. Tempo disponível por dia: [__].
+Formato: tabela com dia, horário e tarefa. Pergunte o que faltar.</div>
+                <button class="btn btn-copy-inline">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>Copiar Prompt</span>
+                </button>
+              </div>
+              <div class="recipe-warning">
+                <strong>🔍 Confira antes:</strong> Verifique se a rotina é humanamente viável e sem choques de horário.
+              </div>
+            </article>
+
+            <!-- Receita 6 -->
+            <article class="recipe-card" data-category="rotina">
+              <div class="recipe-header">
+                <span class="recipe-number">06</span>
+                <div>
+                  <h3 class="recipe-title">Listas de Compras e Estoque</h3>
+                  <span class="recipe-badge">Para casa, despensa ou pequenos comércios</span>
+                </div>
+              </div>
+              <div class="prompt-box-dashed">
+                <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
+                <div class="prompt-text">Organize esta lista por categoria, mantendo as quantidades.
+Depois sugira, apenas como ideia, uma quantidade mínima para não faltar item.
+Lista: [cole sua lista aqui].</div>
+                <button class="btn btn-copy-inline">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>Copiar Prompt</span>
+                </button>
+              </div>
+              <div class="recipe-warning">
+                <strong>🔍 Confira antes:</strong> Ajuste para o consumo real do seu espaço.
+              </div>
+            </article>
+
+            <!-- Receita 7 -->
+            <article class="recipe-card" data-category="custos">
+              <div class="recipe-header">
+                <span class="recipe-number">07</span>
+                <div>
+                  <h3 class="recipe-title">Calcular Custos e Preços</h3>
+                  <span class="recipe-badge">Para saber quanto custa um serviço e quanto cobrar</span>
+                </div>
+              </div>
+              <div class="prompt-box-dashed">
+                <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
+                <div class="prompt-text">Vou calcular o custo de [serviço ou produto].
+Itens e valores: [item: quantidade, R$ __; ...].
+Rendimento ou número de unidades: [__].
+Calcule o custo total, custo unitário e preço de venda para margem de [__%].
+Mostre cada cálculo passo a passo.</div>
+                <button class="btn btn-copy-inline">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>Copiar Prompt</span>
+                </button>
+              </div>
+              <div class="recipe-warning">
+                <strong>🔍 Confira antes:</strong> Refaça todas as contas na calculadora! A Inteligência Artificial erra operações matemáticas com facilidade.
+              </div>
+            </article>
+
+            <!-- Receita 8 -->
+            <article class="recipe-card" data-category="rotina">
+              <div class="recipe-header">
+                <span class="recipe-number">08</span>
+                <div>
+                  <h3 class="recipe-title">Passo a Passo ou Treinamento</h3>
+                  <span class="recipe-badge">Para ensinar um processo a um colega ou familiar</span>
+                </div>
+              </div>
+              <div class="prompt-box-dashed">
+                <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
+                <div class="prompt-text">Crie um passo a passo simples para ensinar [tarefa] a uma pessoa iniciante.
+Use frases curtas, alerte sobre os erros mais comuns e termine com uma lista de verificação (checklist).</div>
+                <button class="btn btn-copy-inline">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>Copiar Prompt</span>
+                </button>
+              </div>
+              <div class="recipe-warning">
+                <strong>🔍 Confira antes:</strong> As regras reais do seu ambiente e normas técnicas vigentes.
+              </div>
+            </article>
+
+            <!-- Receita 9 -->
+            <article class="recipe-card" data-category="comunicacao">
+              <div class="recipe-header">
+                <span class="recipe-number">09</span>
+                <div>
+                  <h3 class="recipe-title">Responder Reclamação ou Mensagem Delicada</h3>
+                  <span class="recipe-badge">Para respostas calmas, empáticas e profissionais</span>
+                </div>
+              </div>
+              <div class="prompt-box-dashed">
+                <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
+                <div class="prompt-text">Recebi esta mensagem: [resuma o ocorrido, sem nomes pessoais].
+Escreva uma resposta educada: peça desculpas com serenidade, informe o que faremos ([solução]) e agradeça o contato. Máximo de 60 palavras.</div>
+                <button class="btn btn-copy-inline">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>Copiar Prompt</span>
+                </button>
+              </div>
+              <div class="recipe-warning">
+                <strong>🔍 Confira antes:</strong> Só prometa o que puder cumprir. Leia com a sua voz antes de enviar.
+              </div>
+            </article>
+
+            <!-- Receita 10 -->
+            <article class="recipe-card" data-category="rotina">
+              <div class="recipe-header">
+                <span class="recipe-number">10</span>
+                <div>
+                  <h3 class="recipe-title">Gerar Ideias e Planejar</h3>
+                  <span class="recipe-badge">Brainstorming para eventos, promoções ou projetos</span>
+                </div>
+              </div>
+              <div class="prompt-box-dashed">
+                <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
+                <div class="prompt-text">Sugira 5 ideias criativas para [objetivo: ex. aumentar movimento em dias calmos / planejar confraternização].
+Para cada ideia: um nome simpático, como aplicar e um ponto de atenção.</div>
+                <button class="btn btn-copy-inline">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>Copiar Prompt</span>
+                </button>
+              </div>
+              <div class="recipe-warning">
+                <strong>🔍 Confira antes:</strong> Verifique a viabilidade financeira e teste primeiro em pequena escala.
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- Botão de Expandir / Recolher Receitas -->
+        <div class="recipes-toggle-area">
+          <button type="button" id="btn-toggle-recipes" class="btn btn-outline">
+            <span id="toggle-recipes-text">Ver todas as 10 receitas (+)</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPÍTULOS 5 & 6: Imagens e Áudio -->
+    <section class="content-section" id="midias-ia" data-search-scope="imagens fotos ilustrações canva áudio transcrição whatsapp ouvir resumir gravações">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="chapter-number">Capítulos 05 & 06</span>
+          <h2 class="section-title">Imagens e Áudios com Inteligência Artificial</h2>
+          <p class="section-subtitle">Dicas essenciais para pedir figuras sem distorção e transcrever notas de voz.</p>
+        </div>
+
+        <div class="grid-cards-2">
+          <!-- Coluna Imagens -->
+          <div class="media-card reveal-on-scroll">
+            <div class="media-card-badge">🎨 Criação de Imagens</div>
+            <h3>Os 5 Elementos da Boa Imagem:</h3>
+            <ul class="media-criteria-list">
+              <li><strong>O que aparece:</strong> uma mesa de madeira com caderno e xícara.</li>
+              <li><strong>O estilo:</strong> ilustração limpa em estilo cartaz moderno.</li>
+              <li><strong>As cores:</strong> predomínio de tons azuis com toques amarelos.</li>
+              <li><strong>Onde usar:</strong> imagem quadrada para feed social.</li>
+              <li><strong>O que evitar:</strong> sem letras, sem pessoas e sem logotipos.</li>
+            </ul>
+
+            <div class="prompt-box-dashed">
+              <div class="dashed-header">PROMPT PARA GERAR IMAGEM</div>
+              <div class="prompt-text">Crie uma ilustração para post quadrado: mesa de madeira com caderno e caneca, luz da manhã, estilo cartaz moderno, tons de azul e amarelo. Sem textos e sem pessoas. Espaço livre no topo para título.</div>
+              <button class="btn btn-copy-inline">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copiar Prompt de Imagem</span>
+              </button>
+            </div>
+            <div class="box-cuidado mt-3">
+              <div class="box-title"><span class="box-cue-icon">⚠️</span> CUIDADO COM TEXTO EM IMAGEM</div>
+              <p>Textos dentro de imagens geradas por Inteligência Artificial costumam sair ilegíveis ou com erros. Gere a imagem limpa e escreva as palavras depois no Canva.</p>
+            </div>
+          </div>
+
+          <!-- Coluna Áudio / Transcrição -->
+          <div class="media-card reveal-on-scroll">
+            <div class="media-card-badge">🎙️ Transcrição & Resumo</div>
+            <h3>Transformar Áudios em Ações:</h3>
+            <p>Economize tempo ao receber recados longos de clientes ou reuniões:</p>
+            <ol class="step-num-list">
+              <li>Separe o áudio (com consentimento dos participantes).</li>
+              <li>Transcreva pelo próprio recurso nativo do celular ou WhatsApp.</li>
+              <li>Envie o texto para a Inteligência Artificial com o modelo abaixo:</li>
+            </ol>
+
+            <div class="prompt-box-dashed">
+              <div class="dashed-header">PROMPT PARA RESUMIR ÁUDIO</div>
+              <div class="prompt-text">Resuma o texto abaixo em 5 linhas e liste as tarefas com: o que fazer, quem faz e até quando. Se faltar informação, escreva "não informado".
+Texto: [cole a transcrição sem dados pessoais confidenciais].</div>
+              <button class="btn btn-copy-inline">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copiar Prompt de Áudio</span>
+              </button>
+            </div>
+            <div class="box-cuidado mt-3">
+              <div class="box-title"><span class="box-cue-icon">⚠️</span> CUIDADO COM NOMES E NÚMEROS</div>
+              <p>Ferramentas de transcrição frequentemente confundem palavras com fonética parecida e valores. Confira no original antes de assumir compromissos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPÍTULO 7: Uso Seguro, Ético e LGPD -->
+    <section class="content-section bg-security" id="seguranca" data-search-scope="segurança lgpd privacidade dados pessoais golpes pix clonagem de voz deepfake checagens cuidados">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="chapter-number chapter-alert">Capítulo 07 · Crucial</span>
+          <h2 class="section-title text-light">Uso Seguro, Ético e Responsável</h2>
+          <p class="section-subtitle text-light-muted">Proteger seus dados e da sua comunidade é a regra número um.</p>
+        </div>
+
+        <div class="security-hero-box reveal-on-scroll">
+          <div class="sec-badge">🛡️ LGPD · LEI Nº 13.709/2018</div>
+          <h3>Suas conversas vão para servidores remotos</h3>
+          <p>
+            Tudo o que você digita em assistentes públicos de Inteligência Artificial pode ser processado e retido. Proteger a intimidade e dados de clientes é obrigação ética e legal.
+          </p>
+
+          <div class="danger-list-grid">
+            <div class="danger-col">
+              <h4>🛑 NUNCA DIGITE NA CONVERSA:</h4>
+              <ul>
+                <li>Senhas e códigos recebidos por SMS ou WhatsApp;</li>
+                <li>CPF, RG, dados bancários e números de cartões;</li>
+                <li>Fotos de comprovantes e documentos pessoais;</li>
+                <li>Endereço residencial e telefone de clientes;</li>
+                <li>Diagnósticos de saúde e receitas médicas;</li>
+                <li>Segredos comerciais ou contratos sigilosos.</li>
+              </ul>
+            </div>
+            <div class="safe-col">
+              <h4>✅ COMO AGIR COM SEGURANÇA:</h4>
+              <ul>
+                <li>Use códigos neutros: troque nomes reais por "Cliente A" ou "Fornecedor 1";</li>
+                <li>Apague dados sensíveis antes de colar qualquer texto;</li>
+                <li>Desative o uso de seus dados para treinamento nas opções de privacidade da ferramenta.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Checagens -->
+        <div class="checks-wrapper mt-4">
+          <h3 class="text-light subsection-title">As 4 Checagens Fundamentais:</h3>
+          <div class="grid-cards-4">
+            <div class="check-card reveal-on-scroll">
+              <div class="check-number">1</div>
+              <h4>Conta</h4>
+              <p>Refaça cálculos de custos, margens e valores na calculadora.</p>
+            </div>
+            <div class="check-card reveal-on-scroll">
+              <div class="check-number">2</div>
+              <h4>Fonte Oficial</h4>
+              <p>Confirme normas e orientações em canais oficiais (.gov.br, Anvisa, Procon).</p>
+            </div>
+            <div class="check-card reveal-on-scroll">
+              <div class="check-number">3</div>
+              <h4>Bom Senso</h4>
+              <p>Se parece milagroso ou muito estranho, desconfie e investigue.</p>
+            </div>
+            <div class="check-card reveal-on-scroll">
+              <div class="check-number">4</div>
+              <h4>Profissional</h4>
+              <p>Em saúde, direito e finanças, consulte médico, contador ou advogado.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Defesa Contra Golpes -->
+        <div class="golpes-box mt-4 reveal-on-scroll">
+          <div class="golpes-header">
+            <span class="box-cue-icon">🚨</span>
+            <h3>Prevenção contra Golpes com Voz Clonada e Pix</h3>
+          </div>
+          <p>Criminosos utilizam Inteligência Artificial para clonar a voz de parentes e solicitar dinheiro emergencial.</p>
+          <div class="golpes-grid">
+            <div class="golpe-tip">
+              <strong>Desconfie de Urgência:</strong> "Preciso do Pix agora!", "Aconteceu um imprevisto!". Respire e não transfira por impulso.
+            </div>
+            <div class="golpe-tip">
+              <strong>Retorne a Ligação:</strong> Desligue o telefone e ligue para o número de costume que já está salvo nos seus contatos.
+            </div>
+            <div class="golpe-tip">
+              <strong>Palavra-Chave Secreta:</strong> Combine previamente com sua família uma palavra simples que só vocês conhecem para testar se é real.
+            </div>
+            <div class="golpe-tip">
+              <strong>Zero Senhas:</strong> Jamais repasse códigos que chegarem via SMS ou confirmações bancárias.
+            </div>
+          </div>
+        </div>
+
+        <!-- Regra de Ouro -->
+        <div class="golden-rule-card mt-4 reveal-on-scroll">
+          <div class="golden-text">
+            <strong>👑 REGRA DE OURO:</strong>
+            <p>O responsável ético e legal final é sempre você, e nunca o sistema de Inteligência Artificial. Use-a como ajudante, jamais como autoridade cega.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPÍTULO 8: Cada Idade, Seu Caminho -->
+    <section class="content-section" id="cada-idade" data-search-scope="idosos melhor idade jovens estudantes adultos trabalho pequenos negocios autonomia">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="chapter-number">Capítulo 08</span>
+          <h2 class="section-title">Inteligência Artificial para Cada Idade</h2>
+          <p class="section-subtitle">Orientações sob medida para o seu momento de vida e trabalho.</p>
+        </div>
+
+        <div class="age-tabs-bar reveal-on-scroll">
+          <button class="age-tab active" data-age="idosos">👴👵 Pessoas Idosas (Melhor Idade)</button>
+          <button class="age-tab" data-age="jovens">🎓 Jovens & Estudantes</button>
+          <button class="age-tab" data-age="adultos">💼 Adultos no Trabalho</button>
+          <button class="age-tab" data-age="empreendedores">🏪 Comerciantes & MEIs</button>
+        </div>
+
+        <div class="age-content-box reveal-on-scroll">
+          <!-- Idosos -->
+          <div class="age-panel active" id="panel-idosos">
+            <h3>Tecnologia sem Medo para a Melhor Idade</h3>
+            <p class="panel-lead">
+              <strong>Não existe idade para aprender.</strong> Quem tem mais vivência tem bom senso e discernimento — exatamente o que a Inteligência Artificial não possui.
+            </p>
+            <div class="age-advice-grid">
+              <div class="advice-card">
+                <h4>🎙️ Fale em Vez de Digitar</h4>
+                <p>Toque no ícone de microfone do teclado do seu telefone e faça suas perguntas falando normalmente.</p>
+              </div>
+              <div class="advice-card">
+                <h4>Peça Explicações Passo a Passo</h4>
+                <p>Diga: "Explique devagar, passo a passo simples, como eu faço isso no celular".</p>
+              </div>
+              <div class="advice-card">
+                <h4>Você Não Quebra o Aparelho</h4>
+                <p>Pode testar sem receio: nada do que você digitar ou perguntar para a Inteligência Artificial vai estragar seu telefone.</p>
+              </div>
+              <div class="advice-card">
+                <h4>Cuidado com Remédios e Golpes</h4>
+                <p>Dúvidas de medicação consulte bula ou médico. Pedidos de dinheiro por voz de parentes desconfie e ligue de volta.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jovens -->
+          <div class="age-panel" id="panel-jovens">
+            <h3>Para Jovens: Estude sem Plágio</h3>
+            <p class="panel-lead">
+              Pedir para a Inteligência Artificial resolver trabalhos escolares inteiros anula o aprendizado e constitui plágio. Trate-a como uma tutora para compreender matérias complexas:
+            </p>
+            <div class="prompt-box-dashed">
+              <div class="dashed-header">PROMPT PARA ESTUDO ÉTICO</div>
+              <div class="prompt-text">Estou estudando [assunto] para [prova/trabalho]. Explique de forma didática com um exemplo prático do dia a dia e, em seguida, faça 3 perguntas desafiadoras para eu testar meu aprendizado. Não faça o trabalho por mim: me ajude a entender.</div>
+              <button class="btn btn-copy-inline">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copiar Prompt de Estudo</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Adultos -->
+          <div class="age-panel" id="panel-adultos">
+            <h3>Para Adultos: Produtividade com Cautela</h3>
+            <p class="panel-lead">
+              Utilize para rascunhos de e-mails formais, organização do orçamento familiar e roteiros de projetos sem divulgar informações sigilosas da sua empresa.
+            </p>
+          </div>
+
+          <!-- Empreendedores -->
+          <div class="age-panel" id="panel-empreendedores">
+            <h3>Para Pequenos Empreendedores: Agilidade no Atendimento</h3>
+            <p class="panel-lead">
+              Responda dúvidas frequentes de clientes, elabore descrições claras de mercadorias e crie avisos sem perder a identidade e a confiança que seu cliente tem em você.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPÍTULO 9: QUIZ INTERATIVO (RECOLHIDO POR PADRÃO) -->
+    <section class="content-section bg-alt" id="quiz-section" data-search-scope="quiz teste exercicio perguntas respostas gabarito avaliar conhecimento">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="chapter-number">Capítulo 09 · Prática</span>
+          <h2 class="section-title">Quiz: O que você aprendeu sobre Inteligência Artificial?</h2>
+          <p class="section-subtitle">Teste seus conhecimentos com questões aleatórias baseadas nos critérios de uso seguro.</p>
+        </div>
+
+        <!-- Banner de Quiz Recolhido (Estado Inicial) -->
+        <div class="quiz-launch-card reveal-on-scroll" id="quiz-intro-box">
+          <div class="quiz-launch-info">
+            <div class="quiz-badge-tag">Simulado Dinâmico</div>
+            <h3>Pronto para testar o que você aprendeu?</h3>
+            <p>O simulador sorteia 8 questões a cada tentativa para avaliar sua percepção sobre pedidos, segurança, LGPD e limites da Inteligência Artificial.</p>
+          </div>
+          <button type="button" id="btn-start-quiz" class="btn btn-primary btn-large">
+            <span class="btn-cue-icon">▶️</span>
+            <span>Iniciar o Questionário</span>
+          </button>
+        </div>
+
+        <!-- Área do Quiz (Aparece ao clicar em Iniciar) -->
+        <div class="quiz-interactive-area" id="quiz-active-area" style="display: none;">
+          <div class="quiz-control-bar">
+            <span class="quiz-round-tag" id="quiz-round-indicator">8 Questões Sorteadas</span>
+            <button type="button" id="btn-collapse-quiz" class="btn-text-link">Recolher Questionário ✕</button>
+          </div>
+
+          <form id="quiz-form">
+            <!-- Container onde as 8 questões sorteadas serão injetadas pelo JavaScript -->
+            <div id="dynamic-questions-container" class="quiz-wrapper"></div>
+
+            <div class="quiz-actions mt-4">
+              <button type="submit" class="btn btn-primary btn-large" id="btn-submit-quiz">
+                <span>Finalizar e Conferir Minha Nota</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Painel de Resultados -->
+          <div class="quiz-score-panel mt-4" id="quiz-result-panel" style="display: none;">
+            <div class="score-circle">
+              <span class="score-number" id="score-val">0</span>
+              <span class="score-total">/ 8</span>
+            </div>
+            <h3 class="result-title" id="result-status-title">Resultado</h3>
+            <p class="result-description" id="result-status-desc">Descrição do diagnóstico</p>
+            <div class="quiz-result-actions">
+              <button type="button" class="btn btn-primary" id="btn-reload-quiz">Sortear Novas Questões e Refazer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLA RÁPIDA, GLOSSÁRIO & FONTES OFICIAIS -->
+    <section class="content-section" id="cola-rapida" data-search-scope="cola rapida impressao pdf termos glossario fontes oficiais gov unesco cert oecd anpd senado procon">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="chapter-number">Consulta Expressa</span>
+          <h2 class="section-title">Cola Rápida & Glossário</h2>
+          <p class="section-subtitle">Para imprimir, salvar no smartphone ou consultar quando tiver dúvidas.</p>
+        </div>
+
+        <div class="print-sheet-card reveal-on-scroll">
+          <div class="sheet-badge">📌 Cola Rápida de Bolso</div>
+          <div class="sheet-grid">
+            <div class="sheet-col">
+              <h4>🎯 PEDIR BEM</h4>
+              <p>5 ingredientes: <strong>Papel, Tarefa, Contexto, Formato e Tom</strong>. Peça 3 opções e mande a Inteligência Artificial fazer perguntas se faltar dado.</p>
+            </div>
+            <div class="sheet-col">
+              <h4>🛑 NUNCA DIGITE</h4>
+              <p>Senhas, SMS, CPF, dados bancários de clientes, diagnósticos médicos e segredos internos.</p>
+            </div>
+            <div class="sheet-col">
+              <h4>🔍 CONFIRA SEMPRE</h4>
+              <p>Refaça contas na calculadora; confirme normas em sites oficiais (.gov.br); consulte profissionais em saúde e leis.</p>
+            </div>
+            <div class="sheet-col">
+              <h4>🚨 CONTRA GOLPES</h4>
+              <p>Pediu Pix urgente por áudio ou vídeo? Pare, desligue e telefone de volta para o número que você tem na agenda.</p>
+            </div>
+          </div>
+          <div class="sheet-footer">
+            <button class="btn btn-secondary" onclick="window.print()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+              <span>Imprimir / Salvar em PDF</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Glossário Rápido -->
+        <div class="glossary-section mt-5">
+          <h3 class="subsection-title">Glossário Descomplicado:</h3>
+          <div class="glossary-search-box">
+            <input type="text" id="glossary-search" placeholder="Filtrar termo (ex: Prompt, Alucinação, LGPD)..." aria-label="Pesquisar no glossário">
+          </div>
+          <div class="glossary-grid" id="glossary-list">
+            <div class="glossary-item reveal-on-scroll">
+              <dt>Inteligência Artificial (IA)</dt>
+              <dd>Software capaz de executar tarefas que demandam cognição, raciocínio e aprendizado humano.</dd>
+            </div>
+            <div class="glossary-item reveal-on-scroll">
+              <dt>Inteligência Artificial Generativa</dt>
+              <dd>Tipo de Inteligência Artificial que produz textos, imagens e ideias novas a partir dos seus comandos.</dd>
+            </div>
+            <div class="glossary-item reveal-on-scroll">
+              <dt>Prompt (Comando)</dt>
+              <dd>A instrução ou pedido em linguagem humana que você escreve ou fala para direcionar a ferramenta.</dd>
+            </div>
+            <div class="glossary-item reveal-on-scroll">
+              <dt>Alucinação</dt>
+              <dd>Quando a máquina inventa fatos, leis ou números fictícios com aparência de certeza.</dd>
+            </div>
+            <div class="glossary-item reveal-on-scroll">
+              <dt>Viés Algorítmico</dt>
+              <dd>Tendência de repetir estereótipos aprendidos com dados históricos da internet.</dd>
+            </div>
+            <div class="glossary-item reveal-on-scroll">
+              <dt>Deepfake</dt>
+              <dd>Vídeo, foto ou áudio manipulado com Inteligência Artificial para clonar o rosto ou a voz de alguém.</dd>
+            </div>
+            <div class="glossary-item reveal-on-scroll">
+              <dt>LGPD (Lei 13.709/2018)</dt>
+              <dd>Legislação brasileira que regulamenta a proteção e a privacidade dos dados de pessoas.</dd>
+            </div>
+            <div class="glossary-item reveal-on-scroll">
+              <dt>Direitos Autorais (Lei 9.610/1998)</dt>
+              <dd>Proteção jurídica concedida aos autores sobre suas criações intelectuais e artísticas.</dd>
+            </div>
+          </div>
+        </div>
+
+        <!-- FONTES OFICIAIS RECOMENDADAS AMPLIADAS -->
+        <div class="continue-learning-box mt-5 reveal-on-scroll">
+          <div class="sources-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <h4>Fontes e Diretrizes Oficiais Recomendadas:</h4>
+          </div>
+          <p class="sources-desc">Para aprofundar seu conhecimento em canais governamentais, acadêmicos e regulatórios:</p>
+          <div class="official-sources-grid">
+            <a href="https://www.gov.br/anpd/pt-br" target="_blank" rel="noopener noreferrer" class="source-card-link">
+              <strong>ANPD · Autoridade Nacional de Proteção de Dados</strong>
+              <span>Orientações oficiais de conformidade com a LGPD e privacidade digital.</span>
+            </a>
+            <a href="https://cartilha.cert.br/" target="_blank" rel="noopener noreferrer" class="source-card-link">
+              <strong>CERT.br / CGI.br · Cartilha de Segurança</strong>
+              <span>Guia contra golpes na internet, engenharia social, phishing e clones.</span>
+            </a>
+            <a href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/estrategia-brasileira-de-inteligencia-artificial-ebia" target="_blank" rel="noopener noreferrer" class="source-card-link">
+              <strong>MCTI · Estratégia Brasileira de Inteligência Artificial (EBIA)</strong>
+              <span>Políticas públicas nacionais de ética, capacitação e inovação tecnológica.</span>
+            </a>
+            <a href="https://www25.senado.leg.br/web/atividade/materias/-/materia/157233" target="_blank" rel="noopener noreferrer" class="source-card-link">
+              <strong>Senado Federal · Marco Legal da IA (PL 2338/2023)</strong>
+              <span>Diretrizes e regulação do uso de sistemas de Inteligência Artificial no Brasil.</span>
+            </a>
+            <a href="https://www.procon.sp.gov.br/" target="_blank" rel="noopener noreferrer" class="source-card-link">
+              <strong>Procon-SP · Proteção ao Consumidor</strong>
+              <span>Prevenção de fraudes no comércio eletrônico e direitos nas compras digitais.</span>
+            </a>
+            <a href="https://www.unesco.org/en/articles/recommendation-ethics-artificial-intelligence" target="_blank" rel="noopener noreferrer" class="source-card-link">
+              <strong>UNESCO · Recomendação sobre a Ética da Inteligência Artificial</strong>
+              <span>Padrões globais de direitos humanos, diversidade e segurança tecnológica.</span>
+            </a>
+            <a href="https://www.oecd.org/en/topics/ai-principles.html" target="_blank" rel="noopener noreferrer" class="source-card-link">
+              <strong>OCDE · Princípios de Inteligência Artificial</strong>
+              <span>Diretrizes internacionais de transparência, robustez e responsabilidade.</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE O PROJETO DE EXTENSÃO UNIP -->
+    <section class="content-section bg-unip" id="sobre-projeto">
+      <div class="container">
+        <div class="unip-banner-card reveal-on-scroll">
+          <div class="unip-header">
+            <div class="unip-logo-box">
+              <span class="unip-logo-text">UNIP</span>
+              <span class="unip-sub">UNIVERSIDADE PAULISTA</span>
+            </div>
+            <div class="unip-tag">Atividades de Extensão Universitária II · 2026</div>
+          </div>
+
+          <div class="unip-body">
+            <h3 class="unip-title">Projeto: "Uso de ferramentas de Inteligência Artificial pelo público em geral"</h3>
+            <p class="unip-desc">
+              Esta aplicação interativa e o e-book original foram elaborados como ação de extensão universitária (Resolução CNE/CES nº 7/2018), vinculados ao <strong>Programa Inova Mais UNIP</strong> (Área de Tecnologia e Produção).
+            </p>
+
+            <div class="unip-criteria-grid">
+              <div class="criterion-item">
+                <div>
+                  <strong>Campus</strong>
+                  <p>UNIP Campus Anchieta (São Paulo/SP)</p>
+                </div>
+              </div>
+              <div class="criterion-item">
+                <div>
+                  <strong>Curso</strong>
+                  <p>Bacharelado em Ciência da Computação</p>
+                </div>
+              </div>
+              <div class="criterion-item">
+                <div>
+                  <strong>Objetivo Social</strong>
+                  <p>Democratizar o acesso prático à Inteligência Artificial com foco em segurança, ética e inclusão digital para leigos.</p>
+                </div>
+              </div>
+              <div class="criterion-item">
+                <div>
+                  <strong>Regulamentação</strong>
+                  <p>Conformidade integral com as normas institucionais e critérios avaliativos da UNIP.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ficha Autor -->
+            <div class="student-author-box">
+              <div class="student-avatar-big">PV</div>
+              <div class="student-details">
+                <h4 class="student-name">Pablo Alexandre de Vasconcelos</h4>
+                <p class="student-meta">Estudante de Ciência da Computação · Autor e Idealizador da Obra</p>
+                <div class="student-quote">
+                  "Traduzir conhecimentos técnicos de Ciência da Computação em autonomia palpável para o dia a dia da comunidade."
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- WIDGET FLUTUANTE DE LEITURA EM VOZ ALTA (ACESSIBILIDADE PARA IDOSOS / LEITURA) -->
+  <aside id="tts-floating-widget" class="tts-widget" style="display: none;" aria-label="Controle de Leitura em Voz Alta">
+    <div class="tts-widget-inner" id="tts-drag-handle" title="Arraste e solte sobre qualquer texto para ler, ou clique nele!">
+      <span class="tts-mic-icon">🎙️</span>
+      <div class="tts-widget-text">
+        <span class="tts-status" id="tts-status-label">Modo Ouvir Ativo</span>
+        <span class="tts-subhint">Toque em qualquer frase para ouvir</span>
+      </div>
+      <button type="button" id="btn-stop-tts" class="tts-action-btn" title="Parar fala">⏹</button>
+      <button type="button" id="btn-close-tts-widget" class="tts-action-btn close-btn" title="Desativar leitor">✕</button>
+    </div>
+  </aside>
+
+  <!-- Rodapé Completo com Créditos -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <div class="footer-brand">Inteligência Artificial sem Complicação</div>
+          <p>Ação extensionista dedicada à inclusão digital e alfabetização tecnológica segura de famílias, pequenos empreendedores e estudantes.</p>
+          <div class="footer-legal">
+            Material educacional sem fins lucrativos. Em cumprimento às normas da Vice-Reitoria de Extensão da Universidade Paulista.
+          </div>
+        </div>
+
+        <div class="footer-credits">
+          <h4>Autoria & Desenvolvimento</h4>
+          <p class="credit-author"><strong>Pablo Alexandre de Vasconcelos</strong></p>
+          <p class="credit-course">Bacharelado em Ciência da Computação<br>Universidade Paulista · Campus Anchieta</p>
+          
+          <div class="social-links-list">
+            <!-- Os links serão atualizados diretamente pelo Pablo como especificado -->
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="social-btn github-btn" title="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-btn linkedin-btn" title="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Pablo Alexandre de Vasconcelos · UNIP Campus Anchieta</p>
+        <a href="#hero" class="back-to-top">Voltar ao Topo ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast de Notificação -->
+  <div id="copy-toast" class="toast-notification" role="status" aria-live="polite">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toast-message">Copiado com sucesso!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
