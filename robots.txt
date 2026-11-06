@@ -1,0 +1,8 @@
+# robots.txt para IA sem Complicação
+# Autor: Pablo Alexandre de Vasconcelos
+User-agent: *
+Allow: /
+Disallow:
+
+Sitemap: https://pablotechdev.github.io/Extensao-II/sitemap.xml
+

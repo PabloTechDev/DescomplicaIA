@@ -10,7 +10,7 @@
 
 ## 📌 Visão Geral do Projeto
 
-O **IA sem Complicação** é uma aplicação web concisa, interativa e *mobile-first*, estruturada a partir do e-book oficial do projeto de extensão. Seu objetivo principal é **democratizar o uso prático, crítico, ético e seguro de ferramentas de Inteligência Artificial para a comunidade leiga** (pequenos comerciantes, autônomos, estudantes, pessoas idosas e famílias).
+O **IA sem Complicação** é uma aplicação web concisa, interativa e *mobile-first*, estruturada a partir do e-book *IA sem Complicação* de autoria de **Pablo Alexandre de Vasconcelos** para o projeto de extensão universitária da UNIP. Seu objetivo principal é **democratizar o uso prático, crítico, ético e seguro de ferramentas de Inteligência Artificial para a comunidade leiga** (pequenos comerciantes, autônomos, estudantes, pessoas idosas e famílias).
 
 ---
 
@@ -44,6 +44,10 @@ O **IA sem Complicação** é uma aplicação web concisa, interativa e *mobile-
    - Rodapé configurado com os links oficiais de **Pablo Alexandre de Vasconcelos**:
      - GitHub: [https://github.com/PabloTechDev](https://github.com/PabloTechDev)
      - LinkedIn: [https://www.linkedin.com/in/pablo-vsc](https://www.linkedin.com/in/pablo-vsc)
+10. **SEO de Alto Nível & Dados Estruturados (Google Rich Snippets):**
+    - Metadados completos para redes sociais (Open Graph e Twitter Cards com título, descrição e imagem de prévia).
+    - Marcação Schema.org em JSON-LD (`WebSite`, `Book`, `EducationalWebPage` e `FAQPage` para que o Google exiba perguntas frequentes e créditos do autor diretamente nos resultados de busca).
+    - Arquivos `robots.txt` e `sitemap.xml` integrados na raiz para indexação otimizada por buscadores.
 
 ---
 
