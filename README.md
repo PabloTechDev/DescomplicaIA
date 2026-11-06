@@ -40,8 +40,10 @@ O **IA sem Complicação** é uma aplicação web concisa, interativa e *mobile-
    - Fim dos efeitos de brilho ou poluição visual, mantendo a paleta elegante do e-book.
 8. **Fontes Oficiais e Governamentais Ampliadas:**
    - Inclusão de referências de alto prestígio: ANPD (LGPD), CERT.br / CGI.br (Segurança contra golpes), MCTI (EBIA), Senado Federal (Marco Legal da IA - PL 2338/2023), Procon-SP, UNESCO e OCDE.
-9. **Personalização de Contatos:**
-   - Rodapé preparado para a inserção das credenciais definitivas de GitHub e LinkedIn de **Pablo Alexandre de Vasconcelos**.
+9. **Autoria e Redes Oficiais:**
+   - Rodapé configurado com os links oficiais de **Pablo Alexandre de Vasconcelos**:
+     - GitHub: [https://github.com/PabloTechDev](https://github.com/PabloTechDev)
+     - LinkedIn: [https://www.linkedin.com/in/pablo-vsc](https://www.linkedin.com/in/pablo-vsc)
 
 ---
 

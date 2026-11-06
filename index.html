@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -7,109 +8,128 @@
   <meta name="description" content="Guia prático, acessível e conciso para usar Inteligência Artificial com segurança no cotidiano. Projeto de Extensão II - UNIP Campus Anchieta.">
   <meta name="author" content="Pablo Alexandre de Vasconcelos">
   <title>Inteligência Artificial sem Complicação | Guia Prático - UNIP Anchieta</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
+
   <!-- Lenis para Scroll Ultra-Suave no PC / Desktop -->
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <!-- Barra de Notificação e Acessibilidade Superior -->
-  <aside class="top-bar" id="top-bar" aria-label="Acessibilidade e Identificação Institucional">
-    <div class="container top-bar-content">
-      <div class="top-bar-badge">
-        <span class="status-indicator" aria-hidden="true"></span>
-        <span>UNIP Campus Anchieta · Ciência da Computação · Extensão II</span>
-      </div>
-
-      <div class="accessibility-controls">
-        <!-- Botão Assistente de Leitura por Voz para Idosos / Dificuldade de Leitura -->
-        <button id="btn-toggle-tts" class="acc-btn tts-btn" title="Ativar leitor em voz alta" aria-label="Ativar leitor de tela em voz alta">
-          <span class="btn-cue-icon">🔊</span>
-          <span class="tts-btn-text">Ouvir Página</span>
-        </button>
-
-        <button id="btn-decrease-font" class="acc-btn" title="Diminuir fonte" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button id="btn-reset-font" class="acc-btn" title="Tamanho normal" aria-label="Tamanho normal da fonte">A</button>
-        <button id="btn-increase-font" class="acc-btn" title="Aumentar fonte" aria-label="Aumentar tamanho da fonte">A+</button>
-        
-        <button id="btn-toggle-theme" class="acc-btn theme-toggle" title="Alternar modo escuro/claro" aria-label="Alternar tema">
-          <svg class="ui-icon theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          <svg class="ui-icon theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        </button>
-      </div>
-    </div>
-  </aside>
-
-  <!-- Cabeçalho Principal (Sempre Fixo/Sticky Acompanhando o Scroll) -->
-  <header class="main-header" id="header">
-    <div class="container header-container">
-      <a href="#hero" class="brand-logo" aria-label="Início Inteligência Artificial sem Complicação">
-        <div class="brand-symbol">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            <circle cx="9" cy="10" r="1" fill="currentColor"></circle>
-            <circle cx="12" cy="10" r="1" fill="currentColor"></circle>
-            <circle cx="15" cy="10" r="1" fill="currentColor"></circle>
-          </svg>
+  <!-- WRAPPER FIXO DO CABEÇALHO COMPLETO (ACOMPANHA O SCROLL 100% DO TEMPO) -->
+  <div class="site-header-wrapper" id="site-header-wrapper">
+    <!-- Barra de Notificação e Acessibilidade Superior -->
+    <aside class="top-bar" id="top-bar" aria-label="Acessibilidade e Identificação Institucional">
+      <div class="container top-bar-content">
+        <div class="top-bar-badge">
+          <span class="status-indicator" aria-hidden="true"></span>
+          <span>UNIP Campus Anchieta · Ciência da Computação · Extensão II</span>
         </div>
-        <div class="brand-text">
-          <span class="brand-title">Inteligência Artificial sem Complicação</span>
-          <span class="brand-subtitle">Guia Prático de Extensão · UNIP</span>
+
+        <div class="accessibility-controls">
+          <!-- Botão Assistente de Leitura por Voz para Idosos / Dificuldade de Leitura -->
+          <button id="btn-toggle-tts" class="acc-btn tts-btn" title="Ativar leitor em voz alta" aria-label="Ativar leitor de tela em voz alta">
+            <span class="btn-cue-icon">🔊</span>
+            <span class="tts-btn-text">Ouvir Página</span>
+          </button>
+
+          <button id="btn-decrease-font" class="acc-btn" title="Diminuir fonte" aria-label="Diminuir tamanho da fonte">A-</button>
+          <button id="btn-reset-font" class="acc-btn" title="Tamanho normal" aria-label="Tamanho normal da fonte">A</button>
+          <button id="btn-increase-font" class="acc-btn" title="Aumentar fonte" aria-label="Aumentar tamanho da fonte">A+</button>
+
+          <button id="btn-toggle-theme" class="acc-btn theme-toggle" title="Alternar modo escuro/claro" aria-label="Alternar tema">
+            <svg class="ui-icon theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="ui-icon theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
         </div>
-      </a>
-
-      <!-- Ações do Header (Busca + Hambúrguer) -->
-      <div class="header-actions-group">
-        <!-- Botão de Busca / Lupa -->
-        <button id="btn-open-search" class="search-trigger-btn" aria-label="Pesquisar no site" title="Pesquisar assuntos e termos">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <span class="search-trigger-text">Pesquisar</span>
-        </button>
-
-        <!-- Botão Hambúrguer Mobile -->
-        <button id="mobile-menu-btn" class="mobile-menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu de navegação">
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-        </button>
       </div>
+    </aside>
 
-      <!-- Menu Principal -->
-      <nav id="main-nav" class="nav-menu" aria-label="Navegação do site" aria-hidden="true">
-        <div class="nav-menu-header-mobile">
-          <span class="nav-mobile-title">Menu de Navegação</span>
-          <button id="btn-close-nav" class="btn-close-modal" aria-label="Fechar menu">✕</button>
+    <!-- Cabeçalho Principal (Navegação) -->
+    <header class="main-header" id="header">
+      <div class="container header-container">
+        <a href="#hero" class="brand-logo" aria-label="Início Inteligência Artificial sem Complicação">
+          <div class="brand-symbol">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              <circle cx="9" cy="10" r="1" fill="currentColor"></circle>
+              <circle cx="12" cy="10" r="1" fill="currentColor"></circle>
+              <circle cx="15" cy="10" r="1" fill="currentColor"></circle>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">Inteligência Artificial sem Complicação</span>
+            <span class="brand-subtitle">Guia Prático de Extensão · UNIP</span>
+          </div>
+        </a>
+
+        <!-- Ações do Header (Busca + Hambúrguer) -->
+        <div class="header-actions-group">
+          <!-- Botão de Busca / Lupa -->
+          <button id="btn-open-search" class="search-trigger-btn" aria-label="Pesquisar no site" title="Pesquisar assuntos e termos">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span class="search-trigger-text">Pesquisar</span>
+          </button>
+
+          <!-- Botão Hambúrguer Mobile -->
+          <button id="mobile-menu-btn" class="mobile-menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu de navegação">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
         </div>
-        <ul class="nav-list">
-          <li><a href="#o-que-e-ia" class="nav-link">1. O que é</a></li>
-          <li><a href="#primeiros-passos" class="nav-link">2. Primeiros Passos</a></li>
-          <li><a href="#construtor-prompt" class="nav-link">3. Receita do Pedido</a></li>
-          <li><a href="#receitas-praticas" class="nav-link">4. 10 Receitas</a></li>
-          <li><a href="#midias-ia" class="nav-link">5. Imagens & Voz</a></li>
-          <li><a href="#seguranca" class="nav-link">6. Segurança & LGPD</a></li>
-          <li><a href="#cada-idade" class="nav-link">7. Para Cada Idade</a></li>
-          <li><a href="#quiz-section" class="nav-link highlight-link">Quiz</a></li>
-          <li><a href="#cola-rapida" class="nav-link">Cola Rápida</a></li>
-          <li><a href="#sobre-projeto" class="nav-link">Sobre o Projeto</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+
+        <!-- Menu Principal -->
+        <nav id="main-nav" class="nav-menu" aria-label="Navegação do site" aria-hidden="true">
+          <div class="nav-menu-header-mobile">
+            <span class="nav-mobile-title">Menu de Navegação</span>
+            <button id="btn-close-nav" class="btn-close-modal" aria-label="Fechar menu">✕</button>
+          </div>
+          <ul class="nav-list">
+            <li><a href="#o-que-e-ia" class="nav-link">O que é</a></li>
+            <li><a href="#primeiros-passos" class="nav-link">Primeiros Passos</a></li>
+            <li><a href="#construtor-prompt" class="nav-link">Criar Pedido</a></li>
+            <li><a href="#receitas-praticas" class="nav-link">Receitas</a></li>
+            <li><a href="#midias-ia" class="nav-link">Imagens & Voz</a></li>
+            <li><a href="#seguranca" class="nav-link">Segurança</a></li>
+            <li><a href="#cada-idade" class="nav-link">Por Idade</a></li>
+            <li><a href="#quiz-section" class="nav-link highlight-link">Quiz</a></li>
+            <li><a href="#cola-rapida" class="nav-link">Cola Rápida</a></li>
+            <li><a href="#sobre-projeto" class="nav-link">Sobre</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </div>
 
   <!-- MODAL DE BUSCA INTERATIVO -->
   <div id="search-modal" class="search-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="search-modal-window">
       <div class="search-input-wrapper">
-        <svg class="search-modal-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <svg class="search-modal-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
         <input type="search" id="site-search-input" placeholder="O que deseja aprender? (Ex: idoso, whatsapp, preço, golpe, lgpd)..." autocomplete="off">
         <button id="btn-close-search" class="btn-close-modal" aria-label="Fechar busca">✕</button>
       </div>
@@ -133,7 +153,9 @@
       <div class="container hero-container">
         <div class="hero-content reveal-on-scroll">
           <div class="hero-tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
             <span>Extensão Universitária · Ciência da Computação</span>
           </div>
 
@@ -160,7 +182,9 @@
           <!-- Badges de valor concisos -->
           <div class="hero-pills">
             <div class="pill-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>10 Modelos Prontos</span>
             </div>
             <div class="pill-item">
@@ -247,7 +271,10 @@
           <div class="guided-footer">
             <button type="button" id="btn-apply-guided" class="btn btn-primary btn-large">
               <span>Ir para a Seção Recomendada</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
             </button>
           </div>
         </div>
@@ -551,7 +578,10 @@
               <pre class="prompt-output" id="output-prompt-text"></pre>
               <div class="prompt-action-bar">
                 <button type="button" class="btn btn-copy" id="btn-copy-builder">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
                   <span>Copiar Pedido Pronto</span>
                 </button>
                 <span class="copy-feedback" id="copy-feedback-msg" role="status">Copiado para a área de transferência!</span>
@@ -611,7 +641,7 @@
 
         <!-- Lista de Receitas com visualização inicial compacta -->
         <div class="recipes-container" id="recipes-list">
-          
+
           <!-- Receita 1 -->
           <article class="recipe-card reveal-on-scroll" data-category="vendas">
             <div class="recipe-header">
@@ -624,11 +654,14 @@
             <div class="prompt-box-dashed">
               <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
               <div class="prompt-text">Você é redator de textos simples e honestos.
-Escreva 3 opções de descrição curta (até 30 palavras) para [produto ou serviço], voltada a [público: ex. moradores do bairro, famílias].
-Informações verdadeiras que podem ser usadas: [liste diferenciais, horário, forma de atendimento].
-Linguagem simples, sem exageros e sem inventar nada além do informado.</div>
+                Escreva 3 opções de descrição curta (até 30 palavras) para [produto ou serviço], voltada a [público: ex. moradores do bairro, famílias].
+                Informações verdadeiras que podem ser usadas: [liste diferenciais, horário, forma de atendimento].
+                Linguagem simples, sem exageros e sem inventar nada além do informado.</div>
               <button class="btn btn-copy-inline">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
                 <span>Copiar Prompt</span>
               </button>
             </div>
@@ -649,12 +682,15 @@ Linguagem simples, sem exageros e sem inventar nada além do informado.</div>
             <div class="prompt-box-dashed">
               <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
               <div class="prompt-text">Você atende pessoas pelo WhatsApp de [meu negócio].
-Responda de forma educada, curta e simpática.
-Informações verdadeiras: horário [__]; prazo [__]; formas de pagamento [__].
-Mensagem recebida: [cole aqui a mensagem, sem nome nem telefone].
-Não invente preços nem prazos que eu não informei. Se faltar informação, diga que vai confirmar.</div>
+                Responda de forma educada, curta e simpática.
+                Informações verdadeiras: horário [__]; prazo [__]; formas de pagamento [__].
+                Mensagem recebida: [cole aqui a mensagem, sem nome nem telefone].
+                Não invente preços nem prazos que eu não informei. Se faltar informação, diga que vai confirmar.</div>
               <button class="btn btn-copy-inline">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
                 <span>Copiar Prompt</span>
               </button>
             </div>
@@ -675,10 +711,13 @@ Não invente preços nem prazos que eu não informei. Se faltar informação, di
             <div class="prompt-box-dashed">
               <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
               <div class="prompt-text">Escreva um aviso curto para [clientes / vizinhos / equipe] sobre: [assunto, data e horário].
-Tom simpático e direto.
-Faça duas versões: uma para mural físico e outra curta para WhatsApp.</div>
+                Tom simpático e direto.
+                Faça duas versões: uma para mural físico e outra curta para WhatsApp.</div>
               <button class="btn btn-copy-inline">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
                 <span>Copiar Prompt</span>
               </button>
             </div>
@@ -702,10 +741,13 @@ Faça duas versões: uma para mural físico e outra curta para WhatsApp.</div>
               <div class="prompt-box-dashed">
                 <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
                 <div class="prompt-text">Crie 3 opções de legenda para divulgar [evento ou serviço] no dia [__].
-Tom caloroso e próximo. Até 40 palavras cada, terminando com convite para ação.
-Sugira também 5 hashtags relacionadas a [bairro/cidade].</div>
+                  Tom caloroso e próximo. Até 40 palavras cada, terminando com convite para ação.
+                  Sugira também 5 hashtags relacionadas a [bairro/cidade].</div>
                 <button class="btn btn-copy-inline">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
                   <span>Copiar Prompt</span>
                 </button>
               </div>
@@ -726,12 +768,15 @@ Sugira também 5 hashtags relacionadas a [bairro/cidade].</div>
               <div class="prompt-box-dashed">
                 <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
                 <div class="prompt-text">Monte um plano para [o meu dia / minha semana].
-Compromissos fixos: [liste dia e horário].
-Tarefas a fazer: [liste as tarefas].
-Prazos: [__]. Tempo disponível por dia: [__].
-Formato: tabela com dia, horário e tarefa. Pergunte o que faltar.</div>
+                  Compromissos fixos: [liste dia e horário].
+                  Tarefas a fazer: [liste as tarefas].
+                  Prazos: [__]. Tempo disponível por dia: [__].
+                  Formato: tabela com dia, horário e tarefa. Pergunte o que faltar.</div>
                 <button class="btn btn-copy-inline">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
                   <span>Copiar Prompt</span>
                 </button>
               </div>
@@ -752,10 +797,13 @@ Formato: tabela com dia, horário e tarefa. Pergunte o que faltar.</div>
               <div class="prompt-box-dashed">
                 <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
                 <div class="prompt-text">Organize esta lista por categoria, mantendo as quantidades.
-Depois sugira, apenas como ideia, uma quantidade mínima para não faltar item.
-Lista: [cole sua lista aqui].</div>
+                  Depois sugira, apenas como ideia, uma quantidade mínima para não faltar item.
+                  Lista: [cole sua lista aqui].</div>
                 <button class="btn btn-copy-inline">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
                   <span>Copiar Prompt</span>
                 </button>
               </div>
@@ -776,12 +824,15 @@ Lista: [cole sua lista aqui].</div>
               <div class="prompt-box-dashed">
                 <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
                 <div class="prompt-text">Vou calcular o custo de [serviço ou produto].
-Itens e valores: [item: quantidade, R$ __; ...].
-Rendimento ou número de unidades: [__].
-Calcule o custo total, custo unitário e preço de venda para margem de [__%].
-Mostre cada cálculo passo a passo.</div>
+                  Itens e valores: [item: quantidade, R$ __; ...].
+                  Rendimento ou número de unidades: [__].
+                  Calcule o custo total, custo unitário e preço de venda para margem de [__%].
+                  Mostre cada cálculo passo a passo.</div>
                 <button class="btn btn-copy-inline">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
                   <span>Copiar Prompt</span>
                 </button>
               </div>
@@ -802,9 +853,12 @@ Mostre cada cálculo passo a passo.</div>
               <div class="prompt-box-dashed">
                 <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
                 <div class="prompt-text">Crie um passo a passo simples para ensinar [tarefa] a uma pessoa iniciante.
-Use frases curtas, alerte sobre os erros mais comuns e termine com uma lista de verificação (checklist).</div>
+                  Use frases curtas, alerte sobre os erros mais comuns e termine com uma lista de verificação (checklist).</div>
                 <button class="btn btn-copy-inline">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
                   <span>Copiar Prompt</span>
                 </button>
               </div>
@@ -825,9 +879,12 @@ Use frases curtas, alerte sobre os erros mais comuns e termine com uma lista de 
               <div class="prompt-box-dashed">
                 <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
                 <div class="prompt-text">Recebi esta mensagem: [resuma o ocorrido, sem nomes pessoais].
-Escreva uma resposta educada: peça desculpas com serenidade, informe o que faremos ([solução]) e agradeça o contato. Máximo de 60 palavras.</div>
+                  Escreva uma resposta educada: peça desculpas com serenidade, informe o que faremos ([solução]) e agradeça o contato. Máximo de 60 palavras.</div>
                 <button class="btn btn-copy-inline">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
                   <span>Copiar Prompt</span>
                 </button>
               </div>
@@ -848,9 +905,12 @@ Escreva uma resposta educada: peça desculpas com serenidade, informe o que fare
               <div class="prompt-box-dashed">
                 <div class="dashed-header">PROMPT PRONTO · Copie e substitua os [colchetes]</div>
                 <div class="prompt-text">Sugira 5 ideias criativas para [objetivo: ex. aumentar movimento em dias calmos / planejar confraternização].
-Para cada ideia: um nome simpático, como aplicar e um ponto de atenção.</div>
+                  Para cada ideia: um nome simpático, como aplicar e um ponto de atenção.</div>
                 <button class="btn btn-copy-inline">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
                   <span>Copiar Prompt</span>
                 </button>
               </div>
@@ -897,7 +957,10 @@ Para cada ideia: um nome simpático, como aplicar e um ponto de atenção.</div>
               <div class="dashed-header">PROMPT PARA GERAR IMAGEM</div>
               <div class="prompt-text">Crie uma ilustração para post quadrado: mesa de madeira com caderno e caneca, luz da manhã, estilo cartaz moderno, tons de azul e amarelo. Sem textos e sem pessoas. Espaço livre no topo para título.</div>
               <button class="btn btn-copy-inline">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
                 <span>Copiar Prompt de Imagem</span>
               </button>
             </div>
@@ -921,9 +984,12 @@ Para cada ideia: um nome simpático, como aplicar e um ponto de atenção.</div>
             <div class="prompt-box-dashed">
               <div class="dashed-header">PROMPT PARA RESUMIR ÁUDIO</div>
               <div class="prompt-text">Resuma o texto abaixo em 5 linhas e liste as tarefas com: o que fazer, quem faz e até quando. Se faltar informação, escreva "não informado".
-Texto: [cole a transcrição sem dados pessoais confidenciais].</div>
+                Texto: [cole a transcrição sem dados pessoais confidenciais].</div>
               <button class="btn btn-copy-inline">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
                 <span>Copiar Prompt de Áudio</span>
               </button>
             </div>
@@ -1088,7 +1154,10 @@ Texto: [cole a transcrição sem dados pessoais confidenciais].</div>
               <div class="dashed-header">PROMPT PARA ESTUDO ÉTICO</div>
               <div class="prompt-text">Estou estudando [assunto] para [prova/trabalho]. Explique de forma didática com um exemplo prático do dia a dia e, em seguida, faça 3 perguntas desafiadoras para eu testar meu aprendizado. Não faça o trabalho por mim: me ajude a entender.</div>
               <button class="btn btn-copy-inline">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
                 <span>Copiar Prompt de Estudo</span>
               </button>
             </div>
@@ -1200,7 +1269,11 @@ Texto: [cole a transcrição sem dados pessoais confidenciais].</div>
           </div>
           <div class="sheet-footer">
             <button class="btn btn-secondary" onclick="window.print()">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
               <span>Imprimir / Salvar em PDF</span>
             </button>
           </div>
@@ -1251,7 +1324,9 @@ Texto: [cole a transcrição sem dados pessoais confidenciais].</div>
         <!-- FONTES OFICIAIS RECOMENDADAS AMPLIADAS -->
         <div class="continue-learning-box mt-5 reveal-on-scroll">
           <div class="sources-header">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
             <h4>Fontes e Diretrizes Oficiais Recomendadas:</h4>
           </div>
           <p class="sources-desc">Para aprofundar seu conhecimento em canais governamentais, acadêmicos e regulatórios:</p>
@@ -1380,15 +1455,18 @@ Texto: [cole a transcrição sem dados pessoais confidenciais].</div>
           <h4>Autoria & Desenvolvimento</h4>
           <p class="credit-author"><strong>Pablo Alexandre de Vasconcelos</strong></p>
           <p class="credit-course">Bacharelado em Ciência da Computação<br>Universidade Paulista · Campus Anchieta</p>
-          
+
           <div class="social-links-list">
-            <!-- Os links serão atualizados diretamente pelo Pablo como especificado -->
-            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="social-btn github-btn" title="GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <a href="https://github.com/PabloTechDev" target="_blank" rel="noopener noreferrer" class="social-btn github-btn" title="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              </svg>
               <span>GitHub</span>
             </a>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-btn linkedin-btn" title="LinkedIn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <a href="https://www.linkedin.com/in/pablo-vsc" target="_blank" rel="noopener noreferrer" class="social-btn linkedin-btn" title="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
               <span>LinkedIn</span>
             </a>
           </div>
@@ -1404,10 +1482,13 @@ Texto: [cole a transcrição sem dados pessoais confidenciais].</div>
 
   <!-- Toast de Notificação -->
   <div id="copy-toast" class="toast-notification" role="status" aria-live="polite">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
     <span id="toast-message">Copiado com sucesso!</span>
   </div>
 
   <script src="script.js"></script>
 </body>
+
 </html>

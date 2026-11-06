@@ -30,13 +30,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Efeito de cabeçalho fixo com sombra ao rolar
-  const mainHeader = document.getElementById('header');
+  // Ajuste dinâmico de espaçamento do cabeçalho fixo (acompanha o scroll 100% do tempo)
+  const headerWrapper = document.getElementById('site-header-wrapper') || document.getElementById('header');
+  function updateHeaderOffset() {
+    if (headerWrapper) {
+      const height = headerWrapper.offsetHeight;
+      document.documentElement.style.setProperty('--header-height', `${height}px`);
+      document.body.style.paddingTop = `${height}px`;
+    }
+  }
+
+  function getScrollOffset() {
+    return headerWrapper ? -(headerWrapper.offsetHeight + 14) : -115;
+  }
+
+  window.addEventListener('resize', updateHeaderOffset, { passive: true });
+  window.addEventListener('load', updateHeaderOffset);
+  updateHeaderOffset();
+  setTimeout(updateHeaderOffset, 150);
+
+  // Efeito de sombra ao rolar
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) {
-      mainHeader?.classList.add('scrolled');
+    if (window.scrollY > 15) {
+      headerWrapper?.classList.add('scrolled');
     } else {
-      mainHeader?.classList.remove('scrolled');
+      headerWrapper?.classList.remove('scrolled');
     }
   }, { passive: true });
 
@@ -165,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (targetEl) {
             e.preventDefault();
             if (lenisInstance) {
-              lenisInstance.scrollTo(targetEl, { offset: -70 });
+              lenisInstance.scrollTo(targetEl, { offset: getScrollOffset() });
             } else {
               targetEl.scrollIntoView({ behavior: 'smooth' });
             }
@@ -306,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetEl = document.getElementById(targetId);
         if (targetEl) {
           if (lenisInstance) {
-            lenisInstance.scrollTo(targetEl, { offset: -70 });
+            lenisInstance.scrollTo(targetEl, { offset: getScrollOffset() });
           } else {
             targetEl.scrollIntoView({ behavior: 'smooth' });
           }
@@ -399,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const targetEl = document.getElementById(targetSection);
     if (targetEl) {
       if (lenisInstance) {
-        lenisInstance.scrollTo(targetEl, { offset: -70 });
+        lenisInstance.scrollTo(targetEl, { offset: getScrollOffset() });
       } else {
         targetEl.scrollIntoView({ behavior: 'smooth' });
       }
@@ -543,7 +561,7 @@ Antes de responder, por favor me pergunte o que faltar.`;
       collapseExtraRecipes();
       const targetEl = document.getElementById('receitas-praticas');
       if (targetEl) {
-        if (lenisInstance) lenisInstance.scrollTo(targetEl, { offset: -70 });
+        if (lenisInstance) lenisInstance.scrollTo(targetEl, { offset: getScrollOffset() });
         else targetEl.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
@@ -919,7 +937,7 @@ Antes de responder, por favor me pergunte o que faltar.`;
     quizActiveArea.style.display = 'flex';
     renderActiveQuiz();
     if (lenisInstance) {
-      lenisInstance.scrollTo(quizActiveArea, { offset: -70 });
+      lenisInstance.scrollTo(quizActiveArea, { offset: getScrollOffset() });
     } else {
       quizActiveArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -929,7 +947,7 @@ Antes de responder, por favor me pergunte o que faltar.`;
     quizActiveArea.style.display = 'none';
     quizIntroBox.style.display = 'flex';
     if (lenisInstance) {
-      lenisInstance.scrollTo(quizIntroBox, { offset: -70 });
+      lenisInstance.scrollTo(quizIntroBox, { offset: getScrollOffset() });
     } else {
       quizIntroBox.scrollIntoView({ behavior: 'smooth' });
     }
@@ -938,7 +956,7 @@ Antes de responder, por favor me pergunte o que faltar.`;
   btnReloadQuiz?.addEventListener('click', () => {
     renderActiveQuiz();
     if (lenisInstance) {
-      lenisInstance.scrollTo(quizActiveArea, { offset: -70 });
+      lenisInstance.scrollTo(quizActiveArea, { offset: getScrollOffset() });
     } else {
       quizActiveArea.scrollIntoView({ behavior: 'smooth' });
     }
@@ -1005,7 +1023,7 @@ Antes de responder, por favor me pergunte o que faltar.`;
     if (quizResultPanel) {
       quizResultPanel.style.display = 'block';
       if (lenisInstance) {
-        lenisInstance.scrollTo(quizResultPanel, { offset: -70 });
+        lenisInstance.scrollTo(quizResultPanel, { offset: getScrollOffset() });
       } else {
         quizResultPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
